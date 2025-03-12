@@ -7,7 +7,7 @@ bağlı ceza uygulamaları ile ödeme yapabilirler.
 **Proje Özeti**
 
 Kitap kiralama platformu, kitapların mevcut olup olmadığını kontrol etmeyi, kitapları kiralamayı, iade etmeyi ve cezalar ile ödeme sistemlerini
-entegre etmeyi amaçlamaktadır. Ayrıca, kiralama süresi aşılırsa kullanıcıya ceza uygulanır. İleri düzey özellikler arasında, belirli kdurumlarda
+entegre etmeyi amaçlamaktadır. Ayrıca, kiralama süresi aşılırsa kullanıcıya ceza uygulanır. Özellikler arasında belirli durumlarda
 indirim sistemi ve veritabanı entegrasyonu bulunmaktadır.
 
 **Teknolojiler**
@@ -22,10 +22,11 @@ indirim sistemi ve veritabanı entegrasyonu bulunmaktadır.
 
 Kiralama süresi aşıldığında günlük 10 TL ceza uygulanır.(Kiralama süresi 14 gün olarak belirtilmiştir.)
 Kullanıcılar, ceza tutarını iade sırasında görebilir.
+Her kitabın günlük kiralama ücreti farklıdır.
 
 **İndirim Sistemi**
 
-3 kitap kiralayan bir kullanıcıya %10 indirim uygulanabilir.
+3 kitap kiralayan bir kullanıcıya %10 indirim uygulanır.
 
 **Veritabanı Entegrasyonu**
 
