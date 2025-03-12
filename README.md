@@ -31,6 +31,3 @@ Kullanıcılar, ceza tutarını iade sırasında görebilir.
 
 Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale getirilir. Veritabanı bağlantısı için MySQL kullanılmaktadır.
 
-**Exception Handling**
-Geçersiz işlemler (örneğin, kiralama süresi geçtiği halde kitap iade edilmeye çalışılması) için uygun hata mesajları döndürülür.
-
