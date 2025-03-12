@@ -11,18 +11,24 @@ entegre etmeyi amaçlamaktadır. Ayrıca, kiralama süresi aşılırsa kullanıc
 indirim sistemi ve veritabanı entegrasyonu bulunmaktadır.
 
 **Teknolojiler**
+
 **Backend:** Java, Spring Boot
+
 **Veritabanı:** MySQL (JPA/Hibernate)
+
 **API:** RESTful API
 
 **Ödeme ve Ceza Sistemi**
+
 Kiralama süresi aşıldığında günlük 10 TL ceza uygulanır.(Kiralama süresi 14 gün olarak belirtilmiştir.)
 Kullanıcılar, ceza tutarını iade sırasında görebilir.
 
 **İndirim Sistemi**
+
 3 kitap kiralayan bir kullanıcıya %10 indirim uygulanabilir.
 
 **Veritabanı Entegrasyonu**
+
 Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale getirilir. Veritabanı bağlantısı için MySQL kullanılmaktadır.
 
 **Exception Handling**
