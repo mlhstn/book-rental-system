@@ -35,3 +35,29 @@ Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale 
 
 ![image](https://github.com/user-attachments/assets/33c33f89-9573-4f04-95fd-ab62c7df5984)
 
+**Yeni Özellikler**
+
+Bu projeye planlanan bazı yeni özellikler aşağıda belirtilmiştir. Bu özellikler, sistemin işlevselliğini artırmayı ve kullanıcı deneyimini geliştirmeyi amaçlamaktadır.
+
+**1. Rezervasyon Sistemi**
+
+Kullanıcılar, şu anda kiralanabilir durumda olmayan kitapları rezerve edebilir. Kitap iade edildiğinde, rezervasyon sırasındaki kullanıcıya bildirim yapılır ve kitap teslim edilerek, rezervasyonu gerçekleştiren kullanıcıya kiralanabilir hale gelir.
+
+**Özellikler:**
+
+Kitap, mevcutta kiralanabilir değilse kullanıcılar rezervasyon yapabilir.
+Kitap iade edildiğinde, sıradaki kullanıcıya bildirim yapılır ve kitap teslim edilir.
+2. Okuma Geçmişine Göre Kitap Öneri Sistemi
+Kullanıcıların okuma geçmişine göre kitap önerileri yapılacaktır. Bu öneriler, kullanıcıların daha önce okudukları kitaplara benzer şekilde, içerik bazlı öneri algoritması ya da collaborative filtering yöntemi kullanılarak sunulacaktır.
+
+**Özellikler:**
+
+Kullanıcıların okuma geçmişine dayanarak öneriler sunulur.
+İçerik bazlı öneri veya collaborative filtering yöntemleri kullanılabilir.
+3. İade Tarihi Geçen Kullanıcılara E-posta Gönderimi
+İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilecektir. Bu e-posta, iade tarihi geçen kitapları ve varsa cezaları içerir. Böylece kullanıcılar, cezalar ve iade işlemleri hakkında bilgilendirilir.
+
+**Özellikler:**
+
+Kiralama süresi aşıldığında kullanıcılara e-posta hatırlatması yapılır.
+E-posta, iade tarihi geçmiş kitaplar ve cezalar hakkında bilgi içerir.
