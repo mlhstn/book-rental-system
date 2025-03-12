@@ -31,3 +31,6 @@ Kullanıcılar, ceza tutarını iade sırasında görebilir.
 
 Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale getirilir. Veritabanı bağlantısı için MySQL kullanılmaktadır.
 
+
+![image](https://github.com/user-attachments/assets/33c33f89-9573-4f04-95fd-ab62c7df5984)
+
