@@ -47,14 +47,18 @@ Kullanıcılar, şu anda kiralanabilir durumda olmayan kitapları rezerve edebil
 
 Kitap, mevcutta kiralanabilir değilse kullanıcılar rezervasyon yapabilir.
 Kitap iade edildiğinde, sıradaki kullanıcıya bildirim yapılır ve kitap teslim edilir.
-2. Okuma Geçmişine Göre Kitap Öneri Sistemi
+
+**2. Okuma Geçmişine Göre Kitap Öneri Sistemi**
+
 Kullanıcıların okuma geçmişine göre kitap önerileri yapılacaktır. Bu öneriler, kullanıcıların daha önce okudukları kitaplara benzer şekilde, içerik bazlı öneri algoritması ya da collaborative filtering yöntemi kullanılarak sunulacaktır.
 
 **Özellikler:**
 
 Kullanıcıların okuma geçmişine dayanarak öneriler sunulur.
 İçerik bazlı öneri veya collaborative filtering yöntemleri kullanılabilir.
-3. İade Tarihi Geçen Kullanıcılara E-posta Gönderimi
+
+**3. İade Tarihi Geçen Kullanıcılara E-posta Gönderimi**
+
 İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilecektir. Bu e-posta, iade tarihi geçen kitapları ve varsa cezaları içerir. Böylece kullanıcılar, cezalar ve iade işlemleri hakkında bilgilendirilir.
 
 **Özellikler:**
