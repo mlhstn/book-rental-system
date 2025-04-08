@@ -4,16 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentbook.demo.busines.abstracts.IRentalService;
 import com.rentbook.demo.core.modelMapper.IModelMapperService;
-import com.rentbook.demo.dto.request.Book.BookUpdateRequest;
 import com.rentbook.demo.dto.request.Rental.RentalSaveRequest;
 import com.rentbook.demo.dto.request.Rental.RentalUpdateRequest;
 import com.rentbook.demo.dto.response.RentalReturnResponse;
-import com.rentbook.demo.entity.Book;
 import com.rentbook.demo.entity.Rental;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
