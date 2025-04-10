@@ -35,6 +35,15 @@ Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale 
 
 ![image](https://github.com/user-attachments/assets/33c33f89-9573-4f04-95fd-ab62c7df5984)
 
+**İade Tarihi Geçen Kullanıcılara E-posta Gönderimi**
+
+İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilecektir. Bu e-posta, iade tarihi geçen kitapları ve varsa cezaları içerir.
+Böylece kullanıcılar, cezalar ve iade işlemleri hakkında bilgilendirilir.
+
+**Özellikler:**
+
+Kiralama süresi aşıldığında kullanıcılara e-posta hatırlatması yapılır.
+E-posta, iade tarihi geçmiş kitaplar ve cezalar hakkında bilgi içerir.
 **Yeni Özellikler**
 
 Bu projeye planlanan bazı yeni özellikler aşağıda belirtilmiştir. Bu özellikler, sistemin işlevselliğini artırmayı ve kullanıcı deneyimini geliştirmeyi amaçlamaktadır.
@@ -57,11 +66,4 @@ Kullanıcıların okuma geçmişine göre kitap önerileri yapılacaktır. Bu ö
 Kullanıcıların okuma geçmişine dayanarak öneriler sunulur.
 İçerik bazlı öneri veya collaborative filtering yöntemleri kullanılabilir.
 
-**3. İade Tarihi Geçen Kullanıcılara E-posta Gönderimi**
 
-İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilecektir. Bu e-posta, iade tarihi geçen kitapları ve varsa cezaları içerir. Böylece kullanıcılar, cezalar ve iade işlemleri hakkında bilgilendirilir.
-
-**Özellikler:**
-
-Kiralama süresi aşıldığında kullanıcılara e-posta hatırlatması yapılır.
-E-posta, iade tarihi geçmiş kitaplar ve cezalar hakkında bilgi içerir.
