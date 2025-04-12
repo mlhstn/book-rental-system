@@ -22,5 +22,5 @@ public interface IRentalService {
 
     Rental get(Long id);
 
-    double returnBook(long rentalId);
+    double returnBook(Long rentalId);
 }
