@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "reservation")
 public class Reservation {
@@ -28,15 +28,32 @@ public class Reservation {
     @Column(name = "is_notified", nullable = false)
     private boolean isNotified = false;
 
+    @Column(name = "notified_at")
+    private LocalDateTime notifiedAt;
+
+    @Column(name = "active", nullable = false)
+    private boolean active = true;
+
+
+
     public Reservation() {
         this.reservationDate = LocalDate.now();
     }
 
-    public Reservation( Book book, User user) {
-        this.book = book;
+    public Reservation(Long id,
+                       User user,
+                       Book book,
+                       LocalDate reservationDate,
+                       boolean isNotified,
+                       LocalDateTime notifiedAt,
+                       boolean active) {
+        this.id = id;
         this.user = user;
+        this.book = book;
+        this.reservationDate = reservationDate;
         this.isNotified = isNotified;
-        this.reservationDate = LocalDate.now();
+        this.notifiedAt = notifiedAt;
+        this.active = active;
     }
 
     public Long getId() {
@@ -77,5 +94,21 @@ public class Reservation {
 
     public void setNotified(boolean notified) {
         isNotified = notified;
+    }
+
+    public LocalDateTime getNotifiedAt() {
+        return notifiedAt;
+    }
+
+    public void setNotifiedAt(LocalDateTime notifiedAt) {
+        this.notifiedAt = notifiedAt;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

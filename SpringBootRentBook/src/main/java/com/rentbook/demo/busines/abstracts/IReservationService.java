@@ -11,8 +11,8 @@ public interface IReservationService {
 
     Reservation createReservation(User user, Book book);
     List<Reservation> getReservationsForBook(Book book);
-    Reservation getNextReservation(Book book);
-    boolean hasActiveReservation(User user, Book book);
-    void  markNotified(Reservation reservation);
     Optional<Reservation> getNextReservationForBook(Book book);
+    boolean hasActiveReservation(User user, Book book);
+    List<Reservation> getAllReservations();
+
 }

@@ -3,10 +3,10 @@ package com.rentbook.demo.controller;
 import com.rentbook.demo.busines.abstracts.IBookService;
 import com.rentbook.demo.busines.abstracts.IReservationService;
 import com.rentbook.demo.busines.abstracts.IUserService;
+import com.rentbook.demo.dto.request.Reservation.CreateReservationRequest;
 import com.rentbook.demo.entity.Book;
 import com.rentbook.demo.entity.Reservation;
 import com.rentbook.demo.entity.User;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/reservations")
+@RequestMapping("/v1/reservations")
 @Data
 public class ReservationController {
 
@@ -28,22 +28,24 @@ public class ReservationController {
         this.bookService = bookService;
     }
 
-    public ResponseEntity<String> createReservation(@RequestParam Long userId,
-                                                    @RequestParam Long bookId) {
-
-        User user = userService.getUserById(userId);
-        Book book = bookService.getBookById(bookId);
+    @PostMapping("/create")
+    public ResponseEntity<String> createReservation(@RequestBody CreateReservationRequest request) {
+        User user = userService.getUserById(request.getUserId());
+        Book book = bookService.getBookById(request.getBookId());
 
         if (book.getStock() > 0) {
             return ResponseEntity.badRequest().body("Kitabı kiralayabilirsiniz");
         }
+
         if (reservationService.hasActiveReservation(user, book)) {
             return ResponseEntity.badRequest().body("Bu kullanıcı zaten bu kitap için bir rezervasyon yapmış.");
         }
 
-        reservationService.createReservation(user,book);
-        return ResponseEntity.ok("Rezervasyon başrıyla oluşturuldu.");
+        reservationService.createReservation(user, book);
+        return ResponseEntity.ok("Rezervasyon başarıyla oluşturuldu.");
     }
+
+
 
     @GetMapping("/book/{bookId}")
     public ResponseEntity<List<Reservation>> getReservationsForBook(@PathVariable Long bookId) {
@@ -51,6 +53,10 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.getReservationsForBook(book));
     }
 
+    @GetMapping("getAllReservations")
+    public ResponseEntity<List<Reservation>> getAllReservations() {
+        return ResponseEntity.ok(reservationService.getAllReservations());
+    }
 }
 
 

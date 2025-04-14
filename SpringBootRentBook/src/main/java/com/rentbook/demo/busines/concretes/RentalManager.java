@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -91,11 +92,9 @@ public class RentalManager implements IRentalService {
         bookRepository.save(book);
 
         double penalty = 0.0;
-        double totalCost = 0.0;
         long daysKept = ChronoUnit.DAYS.between(rental.getRentalDate(), today);
         double dailyRentalFee = book.getRentalPriceDay();
-
-        totalCost = daysKept * dailyRentalFee;
+        double totalCost = daysKept * dailyRentalFee;
 
         if (daysKept > 14) {
             long overdueDays = daysKept - 14;
@@ -113,6 +112,7 @@ public class RentalManager implements IRentalService {
         }
 
         rentalRepository.save(rental);
+        bookService.updateBook(book);
 
         reservationService.getNextReservationForBook(book).ifPresent(reservation -> {
             String to = reservation.getUser().getEmail();
@@ -122,6 +122,7 @@ public class RentalManager implements IRentalService {
 
             emailService.sendLateReturnEmail(to, subject, body);
             reservation.setNotified(true);
+            reservation.setNotifiedAt(LocalDateTime.now());
             reservationRepository.save(reservation);
         });
 
@@ -130,6 +131,7 @@ public class RentalManager implements IRentalService {
 
         return totalCost;
     }
+
 
     @Override
     public List<Rental> getAllRentals() {

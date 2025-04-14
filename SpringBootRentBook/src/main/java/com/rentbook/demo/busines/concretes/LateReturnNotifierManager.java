@@ -44,6 +44,5 @@ public class LateReturnNotifierManager implements ILateReturnNotifierService {
 
             emailManager.sendLateReturnEmail(to,subject,body);
         }
-
     }
 }

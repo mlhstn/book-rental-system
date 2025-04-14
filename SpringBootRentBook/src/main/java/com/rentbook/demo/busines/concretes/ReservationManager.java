@@ -45,9 +45,8 @@ public class ReservationManager implements IReservationService {
     }
 
     @Override
-    public Reservation getNextReservation(Book book) {
-        return reservationRepository.findFirstByBookAndIsNotifiedFalseOrderByReservationDateAsc(book)
-                .orElse(null);
+    public Optional<Reservation> getNextReservationForBook(Book book) {
+        return reservationRepository.findFirstByBookAndIsNotifiedFalseOrderByReservationDateAsc(book);
     }
 
     @Override
@@ -55,16 +54,9 @@ public class ReservationManager implements IReservationService {
         return reservationRepository.existsByUserAndBookAndIsNotifiedFalse(user, book);
     }
 
-
     @Override
-    public void markNotified(Reservation reservation) {
-        reservation.setNotified(true);
-        reservationRepository.save(reservation);
-
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 
-    @Override
-    public Optional<Reservation> getNextReservationForBook(Book book) {
-        return reservationRepository.findFirstByBookAndIsNotifiedFalseOrderByReservationDateAsc(book);
-    }
 }
