@@ -22,13 +22,13 @@ Mail: JavaMailSender + Mailtrap (test ortamı)
 
 Kiralama süresi: 14 gün
 
-Süre aşıldığında: Günlük 10 TL ceza
+Süre aşıldığında: Günlük 10 TL ceza.
 
-Ceza, iade sırasında kullanıcıya gösterilir
+Ceza, iade sırasında kullanıcıya gösterilir.
 
-Her kitabın günlük kiralama ücreti farklıdır
+Her kitabın günlük kiralama ücreti farklıdır.
 
-3 kitap kiralayan kullanıcıya %10 indirim uygulanır
+3 kitap kiralayan kullanıcıya %10 indirim uygulanır.
 
 🧩 **Veritabanı Entegrasyonu**
 
@@ -42,14 +42,14 @@ Mail içeriğinde geciken kitap ve varsa ceza bilgileri yer alır.
 
 🔔 **1. Rezervasyon Sistemi (Yeni Özellik)**
 
-Kullanıcılar stokta olmayan kitaplar için rezervasyon yapabilir
-Kitap iade edildiğinde, rezervasyon sırasındaki ilk kullanıcıya otomatik e-posta gönderilir
-Kullanıcı 1 gün içinde kitabı almazsa rezervasyon iptal edilir
-Bu işlem @Scheduled ile her gün otomatik olarak kontrol edilir
-isNotified, notifiedAt ve active alanları ile rezervasyon durumu yönetilir
-Mail gönderimi için Mailtrap + JavaMailSender kullanılmıştır
+Kullanıcılar stokta olmayan kitaplar için rezervasyon yapabilir.
+Kitap iade edildiğinde, rezervasyon sırasındaki ilk kullanıcıya otomatik e-posta gönderilir.
+Kullanıcı 1 gün içinde kitabı almazsa rezervasyon iptal edilir.
+Bu işlem @Scheduled ile her gün otomatik olarak kontrol edilir.
+isNotified, notifiedAt ve active alanları ile rezervasyon durumu yönetilir.
+Mail gönderimi için Mailtrap + JavaMailSender kullanılmıştır.
 
 🧠 **2. Okuma Geçmişine Göre Kitap Öneri Sistemi (Yakında)**
 
-Kullanıcının okuma geçmişine göre kitap önerileri sunulacaktır
-İçerik bazlı öneri algoritmaları veya collaborative filtering yöntemleri kullanılabilir
+Kullanıcının okuma geçmişine göre kitap önerileri sunulacaktır.
+İçerik bazlı öneri algoritmaları veya collaborative filtering yöntemleri kullanılabilir.
