@@ -1,69 +1,55 @@
-**Online Kitap Kiralama Sistemi**
+📚 **Online Kitap Kiralama Sistemi**
 
-Bu proje, kullanıcıların kitapları çevrimiçi olarak kiralayabileceği, kiralanan kitapları takip edebileceği ve kitap koleksiyonlarıyla
-etkileşimde bulunabileceği bir kitap kiralama platformudur. Sistemde kullanıcılar, kitapları kiralayabilir, iade edebilir ve kiralama sürelerine
-bağlı ceza uygulamaları ile ödeme yapabilirler.
+Bu proje, kullanıcıların çevrimiçi ortamda kitap kiralayabileceği bir platformdur. Kullanıcılar kitap kiralayabilir, iade edebilir, geciken iade durumlarında ceza alabilir ve sistem tarafından otomatik bilgilendirme alabilir.
 
-**Proje Özeti**
+🔍**Proje Özeti**
 
-Kitap kiralama platformu, kitapların mevcut olup olmadığını kontrol etmeyi, kitapları kiralamayı, iade etmeyi ve cezalar ile ödeme sistemlerini
-entegre etmeyi amaçlamaktadır. Ayrıca, kiralama süresi aşılırsa kullanıcıya ceza uygulanır. Özellikler arasında belirli durumlarda
-indirim sistemi ve veritabanı entegrasyonu bulunmaktadır.
+Sistem; kitap stoğu kontrolü, kiralama ve iade işlemleri, ceza uygulamaları, indirim sistemi ve veritabanı yönetimini içermektedir.
+Kullanıcılar, günlük kiralama ücretine göre kitap kiralar. 14 günün aşılması durumunda günlük 10 TL ceza uygulanır.
+Ayrıca bir kullanıcı aynı anda 3 veya daha fazla kitap kiralarsa %10 indirim uygulanır.
 
-**Teknolojiler**
+⚙️ **Kullanılan Teknolojiler**
 
-**Backend:** Java, Spring Boot
+Backend: Java, Spring Boot
 
-**Veritabanı:** MySQL (JPA/Hibernate)
+Veritabanı: MySQL (JPA/Hibernate)
 
-**API:** RESTful API
+API: RESTful Web Services
 
-**Ödeme ve Ceza Sistemi**
+Mail: JavaMailSender + Mailtrap (test ortamı)
 
-Kiralama süresi aşıldığında günlük 10 TL ceza uygulanır.(Kiralama süresi 14 gün olarak belirtilmiştir.)
-Kullanıcılar, ceza tutarını iade sırasında görebilir.
+💸**Ödeme ve Ceza Sistemi**
+
+Kiralama süresi: 14 gün
+
+Süre aşıldığında: Günlük 10 TL ceza.
+
+Ceza, iade sırasında kullanıcıya gösterilir.
+
 Her kitabın günlük kiralama ücreti farklıdır.
 
-**İndirim Sistemi**
+3 kitap kiralayan kullanıcıya %10 indirim uygulanır.
 
-3 kitap kiralayan bir kullanıcıya %10 indirim uygulanır.
+🧩 **Veritabanı Entegrasyonu**
 
-**Veritabanı Entegrasyonu**
+Kitaplar, kullanıcılar ve kiralama işlemleri MySQL veritabanında kalıcı olarak saklanır.
+JPA/Hibernate kullanılarak nesne ilişkisel haritalama sağlanır.
 
-Kitaplar, kullanıcılar ve kiralamalar veritabanında saklanarak kalıcı hale getirilir. Veritabanı bağlantısı için MySQL kullanılmaktadır.
+✉️ **Otomatik E-Posta Bildirim Sistemi**
 
+Geciken iadeler için sistem, kullanıcılara otomatik e-posta hatırlatması gönderir.
+Mail içeriğinde geciken kitap ve varsa ceza bilgileri yer alır.
 
-![image](https://github.com/user-attachments/assets/33c33f89-9573-4f04-95fd-ab62c7df5984)
+🔔 **1. Rezervasyon Sistemi (Yeni Özellik)**
 
-**İade Tarihi Geçen Kullanıcılara E-posta Gönderimi**
+Kullanıcılar stokta olmayan kitaplar için rezervasyon yapabilir.
+Kitap iade edildiğinde, rezervasyon sırasındaki ilk kullanıcıya otomatik e-posta gönderilir.
+Kullanıcı 1 gün içinde kitabı almazsa rezervasyon iptal edilir.
+Bu işlem @Scheduled ile her gün otomatik olarak kontrol edilir.
+isNotified, notifiedAt ve active alanları ile rezervasyon durumu yönetilir.
+Mail gönderimi için Mailtrap + JavaMailSender kullanılmıştır.
 
-İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilecektir. Bu e-posta, iade tarihi geçen kitapları ve varsa cezaları içerir.
-Böylece kullanıcılar, cezalar ve iade işlemleri hakkında bilgilendirilir.
+🧠 **2. Okuma Geçmişine Göre Kitap Öneri Sistemi (Yakında)**
 
-**Özellikler:**
-
-Kiralama süresi aşıldığında kullanıcılara e-posta hatırlatması yapılır.
-E-posta, iade tarihi geçmiş kitaplar ve cezalar hakkında bilgi içerir.
-**Yeni Özellikler**
-
-Bu projeye planlanan bazı yeni özellikler aşağıda belirtilmiştir. Bu özellikler, sistemin işlevselliğini artırmayı ve kullanıcı deneyimini geliştirmeyi amaçlamaktadır.
-
-**1. Rezervasyon Sistemi**
-
-Kullanıcılar, şu anda kiralanabilir durumda olmayan kitapları rezerve edebilir. Kitap iade edildiğinde, rezervasyon sırasındaki kullanıcıya bildirim yapılır ve kitap teslim edilerek, rezervasyonu gerçekleştiren kullanıcıya kiralanabilir hale gelir.
-
-**Özellikler:**
-
-Kitap, mevcutta kiralanabilir değilse kullanıcılar rezervasyon yapabilir.
-Kitap iade edildiğinde, sıradaki kullanıcıya bildirim yapılır ve kitap teslim edilir.
-
-**2. Okuma Geçmişine Göre Kitap Öneri Sistemi**
-
-Kullanıcıların okuma geçmişine göre kitap önerileri yapılacaktır. Bu öneriler, kullanıcıların daha önce okudukları kitaplara benzer şekilde, içerik bazlı öneri algoritması ya da collaborative filtering yöntemi kullanılarak sunulacaktır.
-
-**Özellikler:**
-
-Kullanıcıların okuma geçmişine dayanarak öneriler sunulur.
-İçerik bazlı öneri veya collaborative filtering yöntemleri kullanılabilir.
-
-
+Kullanıcının okuma geçmişine göre kitap önerileri sunulacaktır.
+İçerik bazlı öneri algoritmaları veya collaborative filtering yöntemleri kullanılabilir.
