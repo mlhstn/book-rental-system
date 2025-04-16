@@ -1,7 +1,6 @@
 package com.rentbook.demo.busines.concretes;
 
 import com.rentbook.demo.busines.abstracts.IReservationExpirationService;
-import com.rentbook.demo.controller.ReservationController;
 import com.rentbook.demo.dao.ReservationRepository;
 import com.rentbook.demo.entity.Reservation;
 import org.slf4j.Logger;
@@ -9,17 +8,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class ReservationExpirationService implements IReservationExpirationService {
+public class ReservationExpirationManager implements IReservationExpirationService {
 
-    private static final Logger logger = LoggerFactory.getLogger(ReservationExpirationService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReservationExpirationManager.class);
     private final ReservationRepository reservationRepository;
 
-    public ReservationExpirationService(ReservationRepository reservationRepository) {
+    public ReservationExpirationManager(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 

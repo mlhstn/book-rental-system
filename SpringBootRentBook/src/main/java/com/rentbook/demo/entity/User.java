@@ -29,6 +29,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Rental> rentals;
 
+    @OneToMany( mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY )
+    private List<Comment> comments;
+
 
     public Long getId() {
         return id;
