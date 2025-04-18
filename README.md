@@ -1,55 +1,67 @@
-📚 **Online Kitap Kiralama Sistemi**
+## 📚 Online Kitap Kiralama Sistemi
 
-Bu proje, kullanıcıların çevrimiçi ortamda kitap kiralayabileceği bir platformdur. Kullanıcılar kitap kiralayabilir, iade edebilir, geciken iade durumlarında ceza alabilir ve sistem tarafından otomatik bilgilendirme alabilir.
+Çevrimiçi ortamda kitap kiralama, iade, gecikme cezaları ve otomatik bildirimleri bir arada sunan tam donanımlı bir platform.
 
-🔍**Proje Özeti**
+---
 
-Sistem; kitap stoğu kontrolü, kiralama ve iade işlemleri, ceza uygulamaları, indirim sistemi ve veritabanı yönetimini içermektedir.
-Kullanıcılar, günlük kiralama ücretine göre kitap kiralar. 14 günün aşılması durumunda günlük 10 TL ceza uygulanır.
-Ayrıca bir kullanıcı aynı anda 3 veya daha fazla kitap kiralarsa %10 indirim uygulanır.
+### 🔍 Proje Özeti
 
-⚙️ **Kullanılan Teknolojiler**
+- **Stok Kontrolü & Kiralama:** Kitaplar günlük kiralama ücretine göre kiralanır.  
+- **İade & Ceza:** 14 günün aşılması durumunda günlük 10 ₺ ceza uygulanır.  
+- **İndirim:** Aynı anda 3 veya daha fazla kitap kiralayan kullanıcılara %10 indirim.  
 
-Backend: Java, Spring Boot
+---
 
-Veritabanı: MySQL (JPA/Hibernate)
+### ⚙️ Kullanılan Teknolojiler
 
-API: RESTful Web Services
+- **Backend:** Java, Spring Boot  
+- **Veritabanı:** MySQL (JPA/Hibernate)  
+- **API:** RESTful Web Services  
+- **Mail:** JavaMailSender + Mailtrap (test ortamı)  
 
-Mail: JavaMailSender + Mailtrap (test ortamı)
+---
 
-💸**Ödeme ve Ceza Sistemi**
+### 💸 Ödeme & Ceza Sistemi
 
-Kiralama süresi: 14 gün
+- **Kiralama Süresi:** 14 gün  
+- **Gecikme Cezası:** Günlük 10 ₺  
+- **Farklı Ücret:** Her kitabın günlük kiralama ücreti ayrı  
+- **İndirim:** 3+ kitap → %10  
 
-Süre aşıldığında: Günlük 10 TL ceza.
+---
 
-Ceza, iade sırasında kullanıcıya gösterilir.
+### 🧩 Veritabanı
 
-Her kitabın günlük kiralama ücreti farklıdır.
+Kitap, kullanıcı ve kiralama verileri MySQL’de kalıcı olarak saklanır; JPA/Hibernate ile nesne‑ilişkisel haritalama gerçekleştirilir.
 
-3 kitap kiralayan kullanıcıya %10 indirim uygulanır.
+---
 
-🧩 **Veritabanı Entegrasyonu**
+### ✉️ Otomatik E‑Posta Bildirimleri
 
-Kitaplar, kullanıcılar ve kiralama işlemleri MySQL veritabanında kalıcı olarak saklanır.
-JPA/Hibernate kullanılarak nesne ilişkisel haritalama sağlanır.
+Geciken iadeler için Mailtrap üzerinden otomatik hatırlatma e‑postası gönderilir; içerikte gecikme süresi ve ceza bilgisi yer alır.
 
-✉️ **Otomatik E-Posta Bildirim Sistemi**
+---
 
-Geciken iadeler için sistem, kullanıcılara otomatik e-posta hatırlatması gönderir.
-Mail içeriğinde geciken kitap ve varsa ceza bilgileri yer alır.
+### 🔔 1. Rezervasyon Sistemi (Yeni Özellik)
 
-🔔 **1. Rezervasyon Sistemi (Yeni Özellik)**
+- Stokta olmayan kitaplar için **rezervasyon**  
+- İade anında **sıradaki kullanıcıya mail**  
+- 1 gün içinde alınmazsa **otomatik iptal**  
+- `@Scheduled` ile günlük kontrol  
+- Yönetim: `isNotified`, `notifiedAt`, `active`  
+- Mailtrap + JavaMailSender ile test  
 
-Kullanıcılar stokta olmayan kitaplar için rezervasyon yapabilir.
-Kitap iade edildiğinde, rezervasyon sırasındaki ilk kullanıcıya otomatik e-posta gönderilir.
-Kullanıcı 1 gün içinde kitabı almazsa rezervasyon iptal edilir.
-Bu işlem @Scheduled ile her gün otomatik olarak kontrol edilir.
-isNotified, notifiedAt ve active alanları ile rezervasyon durumu yönetilir.
-Mail gönderimi için Mailtrap + JavaMailSender kullanılmıştır.
+---
 
-🧠 **2. Okuma Geçmişine Göre Kitap Öneri Sistemi (Yakında)**
+### 🖋️ 2. Yorum & Puanlama Sistemi (Yeni Özellik)
 
-Kullanıcının okuma geçmişine göre kitap önerileri sunulacaktır.
-İçerik bazlı öneri algoritmaları veya collaborative filtering yöntemleri kullanılabilir.
+- Kullanıcılar kitaplara **1–5 yıldız** arası puan verebilir  
+- **500 karakter**e kadar metin yorumu ekleyebilir  
+- Kitap sayfalarında **ortalama puan** ve **yorum listesi** görüntülenir  
+- Spring Boot, JPA One‑To‑Many, Bean Validation, ModelMapper kullanıldı  
+
+---
+
+### 🧠 3. Okuma Geçmişine Göre Kitap Önerileri (Yakında)
+
+Kullanıcının okuma geçmişine dayalı içerik‑bazlı veya collaborative filtering öneri algoritmaları eklenecek.  
