@@ -4,14 +4,6 @@
 
 ---
 
-### 🔍 Proje Özeti
-
-- **Stok Kontrolü & Kiralama:** Kitaplar günlük kiralama ücretine göre kiralanır.  
-- **İade & Ceza:** 14 günün aşılması durumunda günlük 10 ₺ ceza uygulanır.  
-- **İndirim:** Aynı anda 3 veya daha fazla kitap kiralayan kullanıcılara %10 indirim.  
-
----
-
 ### ⚙️ Kullanılan Teknolojiler
 
 - **Backend:** Java, Spring Boot  
@@ -21,44 +13,21 @@
 
 ---
 
-### 💸 Ödeme & Ceza Sistemi
+- **📦 Stok Kontrolü & Kiralama:** Kitaplar yalnızca stokta varsa kiralanabilir. Her kitabın günlük kiralama ücreti farklıdır.
 
-- **Kiralama Süresi:** 14 gün  
-- **Gecikme Cezası:** Günlük 10 ₺  
-- **Farklı Ücret:** Her kitabın günlük kiralama ücreti ayrı  
-- **İndirim:** 3+ kitap → %10  
+- **⏱️ İade & Ceza:** Kiralama süresi 14 gündür. Gecikilen her gün için otomatik olarak günlük 10 ₺ ceza uygulanır.
 
----
+- **🎁 İndirim Sistemi:** Aynı anda 3 veya daha fazla kitap kiralayan kullanıcılara sistem otomatik olarak %10 indirim uygular.
 
-### 🧩 Veritabanı
+- **✉️ Geciken İade E-Postası:** İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilir.
 
-Kitap, kullanıcı ve kiralama verileri MySQL’de kalıcı olarak saklanır; JPA/Hibernate ile nesne‑ilişkisel haritalama gerçekleştirilir.
+- **🔔 Rezervasyon Sistemi:** Stokta olmayan kitaplar için rezervasyon yapılabilir. Kitap iade edildiğinde sıradaki kullanıcıya otomatik e-posta gönderilir. 1 gün içinde alınmazsa rezervasyon iptal edilir.
 
----
+- **📬 Otomatik Bildirimler:** `@Scheduled` kullanılarak sistem gecikmeleri ve rezervasyonları arka planda düzenli olarak kontrol eder.
 
-### ✉️ Otomatik E‑Posta Bildirimleri
+- **📝 Yorum & Puanlama:** Kullanıcılar kitaplara 1–5 yıldız arasında puan verebilir ve yorum bırakabilir. Yorumlar listelenir, kitaplara ait ortalama puan hesaplanır.
 
-Geciken iadeler için Mailtrap üzerinden otomatik hatırlatma e‑postası gönderilir; içerikte gecikme süresi ve ceza bilgisi yer alır.
-
----
-
-### 🔔 1. Rezervasyon Sistemi (Yeni Özellik)
-
-- Stokta olmayan kitaplar için **rezervasyon**  
-- İade anında **sıradaki kullanıcıya mail**  
-- 1 gün içinde alınmazsa **otomatik iptal**  
-- `@Scheduled` ile günlük kontrol  
-- Yönetim: `isNotified`, `notifiedAt`, `active`  
-- Mailtrap + JavaMailSender ile test  
-
----
-
-### 🖋️ 2. Yorum & Puanlama Sistemi (Yeni Özellik)
-
-- Kullanıcılar kitaplara **1–5 yıldız** arası puan verebilir  
-- **500 karakter**e kadar metin yorumu ekleyebilir  
-- Kitap sayfalarında **ortalama puan** ve **yorum listesi** görüntülenir  
-- Spring Boot, JPA One‑To‑Many, Bean Validation, ModelMapper kullanıldı  
+- **📊 Ortalama Puan Gösterimi:** Her kitabın kullanıcılar tarafından verilen puanlarının ortalaması dinamik olarak hesaplanıp gösterilir.
 
 ---
 
