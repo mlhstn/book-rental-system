@@ -1,55 +1,36 @@
-📚 **Online Kitap Kiralama Sistemi**
+## 📚 Online Kitap Kiralama Sistemi
 
-Bu proje, kullanıcıların çevrimiçi ortamda kitap kiralayabileceği bir platformdur. Kullanıcılar kitap kiralayabilir, iade edebilir, geciken iade durumlarında ceza alabilir ve sistem tarafından otomatik bilgilendirme alabilir.
+Çevrimiçi ortamda kitap kiralama, iade, gecikme cezaları ve otomatik bildirimleri bir arada sunan tam donanımlı bir platform.
 
-🔍**Proje Özeti**
+---
 
-Sistem; kitap stoğu kontrolü, kiralama ve iade işlemleri, ceza uygulamaları, indirim sistemi ve veritabanı yönetimini içermektedir.
-Kullanıcılar, günlük kiralama ücretine göre kitap kiralar. 14 günün aşılması durumunda günlük 10 TL ceza uygulanır.
-Ayrıca bir kullanıcı aynı anda 3 veya daha fazla kitap kiralarsa %10 indirim uygulanır.
+### ⚙️ Kullanılan Teknolojiler
 
-⚙️ **Kullanılan Teknolojiler**
+- **Backend:** Java, Spring Boot  
+- **Veritabanı:** MySQL (JPA/Hibernate)  
+- **API:** RESTful Web Services  
+- **Mail:** JavaMailSender + Mailtrap (test ortamı)  
 
-Backend: Java, Spring Boot
+---
 
-Veritabanı: MySQL (JPA/Hibernate)
+- **📦 Stok Kontrolü & Kiralama:** Kitaplar yalnızca stokta varsa kiralanabilir. Her kitabın günlük kiralama ücreti farklıdır.
 
-API: RESTful Web Services
+- **⏱️ İade & Ceza:** Kiralama süresi 14 gündür. Gecikilen her gün için otomatik olarak günlük 10 ₺ ceza uygulanır.
 
-Mail: JavaMailSender + Mailtrap (test ortamı)
+- **🎁 İndirim Sistemi:** Aynı anda 3 veya daha fazla kitap kiralayan kullanıcılara sistem otomatik olarak %10 indirim uygular.
 
-💸**Ödeme ve Ceza Sistemi**
+- **✉️ Geciken İade E-Postası:** İade tarihi geçen kitaplar için kullanıcıya otomatik e-posta hatırlatması gönderilir.
 
-Kiralama süresi: 14 gün
+- **🔔 Rezervasyon Sistemi:** Stokta olmayan kitaplar için rezervasyon yapılabilir. Kitap iade edildiğinde sıradaki kullanıcıya otomatik e-posta gönderilir. 1 gün içinde alınmazsa rezervasyon iptal edilir.
 
-Süre aşıldığında: Günlük 10 TL ceza.
+- **📬 Otomatik Bildirimler:** `@Scheduled` kullanılarak sistem gecikmeleri ve rezervasyonları arka planda düzenli olarak kontrol eder.
 
-Ceza, iade sırasında kullanıcıya gösterilir.
+- **📝 Yorum & Puanlama:** Kullanıcılar kitaplara 1–5 yıldız arasında puan verebilir ve yorum bırakabilir. Yorumlar listelenir, kitaplara ait ortalama puan hesaplanır.
 
-Her kitabın günlük kiralama ücreti farklıdır.
+- **📊 Ortalama Puan Gösterimi:** Her kitabın kullanıcılar tarafından verilen puanlarının ortalaması dinamik olarak hesaplanıp gösterilir.
 
-3 kitap kiralayan kullanıcıya %10 indirim uygulanır.
+---
 
-🧩 **Veritabanı Entegrasyonu**
+### 🧠 3. Okuma Geçmişine Göre Kitap Önerileri (Yakında)
 
-Kitaplar, kullanıcılar ve kiralama işlemleri MySQL veritabanında kalıcı olarak saklanır.
-JPA/Hibernate kullanılarak nesne ilişkisel haritalama sağlanır.
-
-✉️ **Otomatik E-Posta Bildirim Sistemi**
-
-Geciken iadeler için sistem, kullanıcılara otomatik e-posta hatırlatması gönderir.
-Mail içeriğinde geciken kitap ve varsa ceza bilgileri yer alır.
-
-🔔 **1. Rezervasyon Sistemi (Yeni Özellik)**
-
-Kullanıcılar stokta olmayan kitaplar için rezervasyon yapabilir.
-Kitap iade edildiğinde, rezervasyon sırasındaki ilk kullanıcıya otomatik e-posta gönderilir.
-Kullanıcı 1 gün içinde kitabı almazsa rezervasyon iptal edilir.
-Bu işlem @Scheduled ile her gün otomatik olarak kontrol edilir.
-isNotified, notifiedAt ve active alanları ile rezervasyon durumu yönetilir.
-Mail gönderimi için Mailtrap + JavaMailSender kullanılmıştır.
-
-🧠 **2. Okuma Geçmişine Göre Kitap Öneri Sistemi (Yakında)**
-
-Kullanıcının okuma geçmişine göre kitap önerileri sunulacaktır.
-İçerik bazlı öneri algoritmaları veya collaborative filtering yöntemleri kullanılabilir.
+Kullanıcının okuma geçmişine dayalı içerik‑bazlı veya collaborative filtering öneri algoritmaları eklenecek.  
