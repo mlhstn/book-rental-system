@@ -1,5 +1,6 @@
 package com.rentbook.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -20,7 +21,7 @@ import java.util.List;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -33,73 +34,49 @@ public class Book {
     @Column(name = "publication_year")
     private int publicationYear;
 
-    @Column(name = "category")
-    private String category;
-
     @Column(name = "rental_price_day")
     private double rentalPriceDay;
 
     @Column(name = "stock")
     private int stock;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonBackReference(value = "category-books")
+    private Category category;
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "book-rentals")
     private List<Rental> rentals;
 
-    @OneToMany( mappedBy = "book",
+    @OneToMany(mappedBy = "book",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.LAZY )
+            fetch = FetchType.LAZY)
     private List<Comment> comments;
 
-
-
-    public Long getId() {
-        return id;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
-    public String getTitle() {
-        return title;
+    public List<Rental> getRentals() {
+        return rentals;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public int getPublicationYear() {
-        return publicationYear;
-    }
-
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
-    }
-
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public double getRentalPriceDay() {
-        return rentalPriceDay;
-    }
-
-    public void setRentalPriceDay(double rentalPriceDay) {
-        this.rentalPriceDay = rentalPriceDay;
     }
 
     public int getStock() {
@@ -110,12 +87,44 @@ public class Book {
         this.stock = stock;
     }
 
-    public List<Rental> getRentals() {
-        return rentals;
+    public double getRentalPriceDay() {
+        return rentalPriceDay;
     }
 
-    public void setRentals(List<Rental> rentals) {
-        this.rentals = rentals;
+    public void setRentalPriceDay(double rentalPriceDay) {
+        this.rentalPriceDay = rentalPriceDay;
+    }
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

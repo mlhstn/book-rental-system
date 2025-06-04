@@ -1,5 +1,6 @@
 package com.rentbook.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.ToString;
@@ -34,7 +35,7 @@ public class Rental {
 
      @ManyToOne
      @JoinColumn(name = "book_id", nullable = false)
-     @JsonManagedReference
+     @JsonBackReference(value = "book-rentals")
      private Book book;
 
     public Rental() {

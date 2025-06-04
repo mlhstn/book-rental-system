@@ -28,7 +28,7 @@ public class BookController {
     }
 
 
-    @PostMapping("/save")
+    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Book saveBook(@RequestBody BookSaveRequest bookSaveRequest) throws JsonProcessingException {
         Book book = modelMapper.forRequest().map(bookSaveRequest, Book.class);

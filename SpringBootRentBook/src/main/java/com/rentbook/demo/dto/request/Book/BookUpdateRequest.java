@@ -23,6 +23,8 @@ public class BookUpdateRequest {
 
     private int stock;
 
+   private Long category_Id;
+
     public String getTitle() {
         return title;
     }
@@ -69,6 +71,14 @@ public class BookUpdateRequest {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Long getCategory_Id() {
+        return category_Id;
+    }
+
+    public void setCategory_Id(Long category_Id) {
+        this.category_Id = category_Id;
     }
 
     @Override

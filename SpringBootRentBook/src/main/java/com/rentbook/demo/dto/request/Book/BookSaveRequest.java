@@ -1,12 +1,11 @@
 package com.rentbook.demo.dto.request.Book;
 
+import com.rentbook.demo.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class BookSaveRequest {
 
     private String title;
@@ -15,42 +14,30 @@ public class BookSaveRequest {
 
     private int publicationYear;
 
-    private String category;
-
     private double rentalPriceDay;
 
     private int stock;
 
-    public int getStock() {
-        return stock;
+   private Category category;
+
+    public BookSaveRequest() {
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public double getRentalPriceDay() {
-        return rentalPriceDay;
-    }
-
-    public void setRentalPriceDay(double rentalPriceDay) {
+    public BookSaveRequest(String title, String author, int publicationYear, double rentalPriceDay, int stock, Category category) {
+        this.title = title;
+        this.author = author;
+        this.publicationYear = publicationYear;
         this.rentalPriceDay = rentalPriceDay;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
+        this.stock = stock;
         this.category = category;
     }
 
-    public int getPublicationYear() {
-        return publicationYear;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -61,11 +48,47 @@ public class BookSaveRequest {
         this.author = author;
     }
 
-    public String getTitle() {
-        return title;
+    public int getPublicationYear() {
+        return publicationYear;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
+    public double getRentalPriceDay() {
+        return rentalPriceDay;
+    }
+
+    public void setRentalPriceDay(double rentalPriceDay) {
+        this.rentalPriceDay = rentalPriceDay;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "BookSaveRequest{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", rentalPriceDay=" + rentalPriceDay +
+                ", stock=" + stock +
+                ", category=" + category +
+                '}';
     }
 }

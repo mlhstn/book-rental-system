@@ -5,7 +5,9 @@ import com.rentbook.demo.core.config.Msg;
 import com.rentbook.demo.core.config.exception.NotFoundException;
 import com.rentbook.demo.core.config.exception.RecordAlreadyExistException;
 import com.rentbook.demo.dao.BookRepository;
+import com.rentbook.demo.dao.CategoryRepository;
 import com.rentbook.demo.entity.Book;
+import com.rentbook.demo.entity.Category;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,19 @@ import java.util.Objects;
 public class BookManager implements IBookService {
 
     @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    @Autowired
+    private final CategoryRepository categoryRepository;
 
     @Autowired
     private ModelMapper modelMapper;
+
+    public BookManager(CategoryRepository categoryRepository, ModelMapper modelMapper, BookRepository bookRepository) {
+        this.categoryRepository = categoryRepository;
+        this.modelMapper = modelMapper;
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public Book saveBook(Book book) {
@@ -31,7 +42,14 @@ public class BookManager implements IBookService {
 
             throw new RecordAlreadyExistException(existingBook.getId());
         }
+
+        Long category_Id = book.getCategory().getId();
+        Category category = categoryRepository.findById(category_Id)
+                .orElseThrow(() -> new RuntimeException("kategori bulunamadı"));
+
+        book.setCategory(category);
         book.setId(null);
+
         return bookRepository.save(book);
     }
 
